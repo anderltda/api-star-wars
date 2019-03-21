@@ -5,7 +5,10 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import com.anderltda.apistarwars.dto.PlanetaDTO;
+import com.anderltda.apistarwars.dto.SwapiDTO;
 import com.anderltda.apistarwars.model.Planeta;
+import com.anderltda.apistarwars.response.Response;
 
 /**
  * @author anderson.nascimento
@@ -51,4 +54,22 @@ public interface PlanetaService {
 	 * @param id
 	 */
 	void remover(Long id);
+	
+	/**
+	 * Responsável por buscar um planeta pelo na api - API pública do Star Wars
+	 * (https://swapi.co/)
+	 * 
+	 * @param target
+	 * @return PlanetaDTO
+	 */
+	PlanetaDTO buscarPlanetaAPIStarWars(PlanetaDTO target);
+	
+	/**
+	 * Responsável por lista planetas da api - API pública do Star Wars
+	 * (https://swapi.co/)
+	 * 
+	 * @param page
+	 * @return Response<SwapiDTO>
+	 */
+	Response<SwapiDTO> listarPlanetasAPIStarWars(Integer page);
 }

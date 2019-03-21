@@ -3,9 +3,9 @@ CREATE TABLE `planeta` (
   `nome` varchar(100) NOT NULL,
   `clima` varchar(50) NOT NULL,
   `terreno` varchar(50) NOT NULL,
+  `filmes` varchar(200) NOT NULL,
   `data_atualizacao` datetime NULL,
-  `data_criacao` datetime NOT NULL,
-  `aparicao` INT NULL,
+  `data_criacao` datetime NOT NULL  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

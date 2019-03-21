@@ -1,7 +1,10 @@
 package com.anderltda.apistarwars.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author anderson.nascimento
@@ -31,7 +35,7 @@ public class Planeta implements Serializable {
 	private String terreno;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
-	private Integer quantidadeAparicoes;
+	private String films;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,14 +92,20 @@ public class Planeta implements Serializable {
 		this.dataAtualizacao = dataAtualizacao;
 	}
 	
-	@Column(name = "aparicao", nullable = true)
-	public Integer getQuantidadeAparicoes() {
-		return quantidadeAparicoes;
+	@Column(name = "filmes", nullable = false, length = 200)
+	public String getFilms() {
+		return films;
+	}
+	
+	public void setFilms(String films) {
+		this.films = films.replaceAll("[-)\\[\\\\\\]\\\\?.!%$¨@&>#(_+=^*]*","");
+	}
+	
+	@Transient
+	public List<String> getFilms_() {
+		return !films.isEmpty() ? Arrays.asList(films.split(",")) : new ArrayList<String>();
 	}
 
-	public void setQuantidadeAparicoes(Integer quantidadeAparicoes) {
-		this.quantidadeAparicoes = quantidadeAparicoes;
-	}
 
 	@PreUpdate
 	public void preUpdate() {
@@ -112,9 +122,8 @@ public class Planeta implements Serializable {
 	@Override
 	public String toString() {
 		return "Planeta [id=" + id + ", nome=" + nome + ", clima=" + clima + ", terreno=" + terreno + ", dataCriacao="
-				+ dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", quantidadeAparicoes=" + quantidadeAparicoes
-				+ "]";
+				+ dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", films=" + films + "]";
 	}
-	
+
 	
 }
