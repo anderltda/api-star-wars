@@ -2,7 +2,7 @@
 # api-star-wars
 API rest Spring Boot
 
-# Aplicação está utlizando Swagger com documentação, para ter acesso, basta subir a aplicação e acessar:
+# Aplicação está utlizando documentação swagger, para ter acesso, basta subir a aplicação e acessar:
 # http://localhost:8080/swagger-ui.html que terá acesso aos serviços.
 
 Mais informações acesse: https://swagger.io/
